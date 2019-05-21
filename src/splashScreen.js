@@ -1,17 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import anime from 'animejs';
+import ReactSVG from 'react-svg'
 
 const SplashScreen = () => {
     return (
-        <div style={{padding: '70px 0', border: '3px solid green', textAlign: 'center'}}>
+        <div className="content" style={{textAlign: 'center'}}>
+            <ReactSVG src="./svg.svg" 
+            afterInjection={(error, svg) => {
+                if (error) {
+                  console.error(error)
+                  return
+                }
+                console.log(svg)
+              }}/>
             <label className="label">
-                Welcome
-            </label>
-            <button style={{ backgroundColor: 'blue', color: 'white' }}>
                 Enter
-            </button>
+            </label>
         </div>
     )
 }
+
+let path = anime.path('path');
+
+anime({
+    targets: '.lineOne .lineTwo .lineThree',
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: 'easeInOutSine',
+    duration: 1500,
+    delay: function(el, i) { return i * 250 },
+    direction: 'alternate',
+    loop: true
+});
 
 export default SplashScreen;
