@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import anime from 'animejs';
 import ReactSVG from 'react-svg'
+import svg from './svg.svg'
 
 const SplashScreen = () => {
     return (
         <div className="content" style={{textAlign: 'center'}}>
-            <ReactSVG src="./svg.svg" 
+            <ReactSVG src={svg} 
             afterInjection={(error, svg) => {
                 if (error) {
                   console.error(error)
