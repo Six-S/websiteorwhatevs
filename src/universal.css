@@ -100,6 +100,15 @@
     font-size: 20px;
 }
 
+.Square {
+    width: 30px;
+    height: 30px;
+    background: white;
+    position: fixed;
+    bottom: 35px;
+    right: 15px;
+}
+
 .label:hover {
     animation: 4s ease-out 0s 1 enterFadeRed;
 }
@@ -108,7 +117,7 @@
     position: fixed;
     bottom: 15px;
     right: 15px;
-    background-color: red;
+    background-color: rgb(180, 8, 8);
     border: none;
     color: white;
     padding: 15px 25px;
