@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import anime from 'animejs'
+import 'font-awesome/css/font-awesome.min.css';
 
 class contact extends React.Component {
     constructor(props){
@@ -35,19 +36,17 @@ class contact extends React.Component {
         } else {
             console.log('closing animation!')
             // nums = [5,4,3,2,1]
-            let i = 40
             nums.map(function(num){
             console.log('run animation')
                 let animation = anime({
                     targets: '.Square'+num,
                     keyframes: [
-                    {translateY: 40},
+                    {translateY: 0},
                     ],
                     duration: 4000,
                     easing: 'easeOutElastic(1, .8)',
                     loop: false
                 });
-                // i += 40
                 animation.play();
             });
         }
@@ -79,10 +78,10 @@ class contact extends React.Component {
         return(
             <div className='contactsContainer'>
                 <div className='Square Square1'></div>
-                <div className='Square Square2'></div>
-                <div className='Square Square3'></div>
-                <div className='Square Square4'></div>
-                <div className='Square Square5'></div>
+                <i className='Square Square2 fa fa-at' style={{fontSize: '30px'}}></i>
+                <i className='Square Square3 fa fa-stack-overflow' style={{fontSize: '30px'}}></i>
+                <i className='Square Square4 fa fa-reddit' style={{fontSize: '30px'}}></i>
+                <i className='Square Square5 fa fa-github-square' style={{fontSize: '35px'}}></i>
                 <button 
                 className={this.state.name}
                 onClick={this.buttonClick.bind(this)}>
