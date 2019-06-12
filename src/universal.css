@@ -44,18 +44,6 @@
     stroke-dasharray: 20;
 }
 
-.lineOne {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: lineOne 5s linear;
-  }
-  
-  @keyframes lineOne {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
 #path-top {
     position: absolute;
     top: 10%;
@@ -64,17 +52,6 @@
     position: absolute;
     bottom: 10%;
 }
-
-.lineTwo {
-    position: absolute;
-    left: 50px;
-    top: 100px;
-}
-
-.lineThree {
-    display: none;
-}
-
 
 .top {
     height: 100%;
@@ -98,6 +75,14 @@
     color: white;
     cursor: pointer;
     font-size: 20px;
+}
+
+.labelClicked{
+    color: white;
+    font-size: 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear
 }
 
 .Square {
@@ -124,6 +109,18 @@
     cursor: pointer;
   }
 
+.lineContainer{
+    width: 100vw;
+    height: 100vh;
+}
+
+.line{
+    width: 100px;
+    height: 3px;
+    margin: auto;
+    margin-bottom: 5px;
+    background-color: white;
+}
 
 .contactsButtonClicked {
     position: fixed;

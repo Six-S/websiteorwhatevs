@@ -16,15 +16,13 @@ class contact extends React.Component {
     animation() {
         //I'm a complete idiot, and I hate myself
         let nums = [1,2,3,4,5]
-        console.log(this.state.active)
         if(this.state.active == false){
             let i = -40
             nums.map(function(num){
-            console.log('run animation')
                 let animation = anime({
                     targets: '.Square'+num,
                     keyframes: [
-                    {translateY: i},
+                        {translateY: i},
                     ],
                     duration: 4000,
                     easing: 'easeOutElastic(1, .8)',
@@ -34,14 +32,11 @@ class contact extends React.Component {
                 animation.play();
             });
         } else {
-            console.log('closing animation!')
-            // nums = [5,4,3,2,1]
             nums.map(function(num){
-            console.log('run animation')
                 let animation = anime({
                     targets: '.Square'+num,
                     keyframes: [
-                    {translateY: 0},
+                        {translateY: 0},
                     ],
                     duration: 4000,
                     easing: 'easeOutElastic(1, .8)',
@@ -50,7 +45,6 @@ class contact extends React.Component {
                 animation.play();
             });
         }
-        console.log('animation done')
     }
 
     buttonClick(){
