@@ -14,21 +14,25 @@ class splashscreen extends React.Component {
     enterClicked(){
         console.log('enter was clicked....');
         this.setState({labelState: 'labelClicked'})
-        let animation = anime({
-            targets: '.lineOne',
-            translateY: -250,
-            width: '100%',
-            easing: 'easeInOutSine'
+        let nums = [0, 1, 2]
+        let transY = [-250, 0, 250]
+        nums.map(function(num){
+            let animation = anime({
+                targets: '.line'+num,
+                translateY: transY[num],
+                width: '80vw',
+                easing: 'easeInOutSine'
+            });
+            animation.play()
         });
-        animation.play()
     }
 
     render() {
         return (
             <div className="content" style={{textAlign: 'center'}}>
-                <div className='line lineOne'></div>
-                <div className='line lineTwo'></div>
-                <div className='line lineThree'></div>
+                <div className='line line0'></div>
+                <div className='line line1'></div>
+                <div className='line line2'></div>
                 <label
                 className={this.state.labelState}
                 onClick={this.enterClicked.bind(this)}>
