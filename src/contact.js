@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import anime from 'animejs'
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -16,7 +15,7 @@ class contact extends React.Component {
     animation() {
         //I'm a complete idiot, and I hate myself
         let nums = [1,2,3,4,5]
-        if(this.state.active == false){
+        if(this.state.active === false){
             let i = -40
             nums.map(function(num){
                 let animation = anime({
@@ -48,8 +47,7 @@ class contact extends React.Component {
     }
 
     buttonClick(){
-        console.log('button clicked!')
-        if(this.state.active == false){
+        if(this.state.active === false){
             this.setState({
                 active: true,
                 name: 'contactsButtonClicked',

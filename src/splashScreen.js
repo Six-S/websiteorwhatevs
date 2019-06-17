@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import anime from 'animejs';
 
 class splashscreen extends React.Component {
@@ -9,22 +8,33 @@ class splashscreen extends React.Component {
         this.state = {
             labelState: 'label'
         }
+        console.log('props?', props)
     }
 
     enterClicked(){
         console.log('enter was clicked....');
-        this.setState({labelState: 'labelClicked'})
+        this.setState({labelState: 'labelClicked'});
+        this.props.enterClicked();
         let nums = [0, 1, 2]
         let transY = [-250, 0, 250]
         nums.map(function(num){
             let animation = anime({
                 targets: '.line'+num,
-                translateY: transY[num],
-                width: '80vw',
+                keyframes: [
+                    {translateY: transY[num]},
+                    {width: '80vw'}
+                ],
                 easing: 'easeInOutSine'
             });
-            animation.play()
+            animation.play();
         });
+        // nums.map(function(num){
+        //     let animation = anime({
+        //         targets: '.line'+num,
+        //         translateY: transY[num],
+        //     });
+        //     animation.play();
+        // });
     }
 
     render() {
