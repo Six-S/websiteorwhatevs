@@ -71,6 +71,11 @@
     margin: auto;
 }
 
+.contentText {
+    color: white;
+    text-align: center;
+}
+
 .label {
     color: white;
     cursor: pointer;
@@ -133,4 +138,18 @@
     text-align: center;
     font-size: 16px;
     cursor: pointer;
+}
+
+.navbar {
+    width: 80vw;
+    height: 20px;
+    margin: 0 auto;
+    text-align: center;
+    word-wrap: break-word;
+    color: white;
+}
+
+.navBarText {
+    margin-left: 25px;
+    display: inline-flex;
 }

@@ -22,19 +22,13 @@ class splashscreen extends React.Component {
                 targets: '.line'+num,
                 keyframes: [
                     {translateY: transY[num]},
-                    {width: '80vw'}
-                ],
-                easing: 'easeInOutSine'
+                    {scaleX: '10'}
+                  ],
+                easing: 'easeOutExpo',
+                duration: 1000
             });
             animation.play();
         });
-        // nums.map(function(num){
-        //     let animation = anime({
-        //         targets: '.line'+num,
-        //         translateY: transY[num],
-        //     });
-        //     animation.play();
-        // });
     }
 
     render() {

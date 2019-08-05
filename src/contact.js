@@ -8,7 +8,13 @@ class contact extends React.Component {
         this.state = {
             active: false,
             name: 'contactsButton',
-            text: 'Contact Me'
+            text: 'Contact Me',
+            gotoLink: {
+                reddit: 'https://www.reddit.com/user/FreshRepresentative',
+                stack: 'duckduckgo.com',
+                email: 'mailto:name@email.com',
+                github: 'https://github.com/Six-S'
+            }
         }
     }
 
@@ -64,16 +70,27 @@ class contact extends React.Component {
 
         }
     }
+
+    linkClick(goto){
+        console.log(goto, '!!!!!!!!!!!!!');
+        if (goto){
+            Object.keys(this.state.gotoLink).forEach((link) => {
+                if(goto == link){
+                    console.log(this.state.gotoLink[link]);
+                }
+            })
+        }
+    }
     
     render () {
 
         return(
             <div className='contactsContainer'>
                 <div className='Square Square1'></div>
-                <i className='Square Square2 fa fa-at' style={{fontSize: '30px'}}></i>
-                <i className='Square Square3 fa fa-stack-overflow' style={{fontSize: '30px'}}></i>
-                <i className='Square Square4 fa fa-reddit' style={{fontSize: '30px'}}></i>
-                <i className='Square Square5 fa fa-github-square' style={{fontSize: '35px'}}></i>
+                <i onClick={this.linkClick('email')} className='Square Square2 fa fa-at' style={{fontSize: '30px'}}></i>
+                <i onClick={this.linkClick('stack')} className='Square Square3 fa fa-stack-overflow' style={{fontSize: '30px'}}></i>
+                <i onClick={this.linkClick('reddit')} className='Square Square4 fa fa-reddit' style={{fontSize: '30px'}}></i>
+                <i onClick={this.linkClick('github')} className='Square Square5 fa fa-github-square' style={{fontSize: '35px'}}></i>
                 <button 
                 className={this.state.name}
                 onClick={this.buttonClick.bind(this)}>
