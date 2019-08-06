@@ -10,14 +10,17 @@ class App extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            enter: false
+            enter: false,
+            contentVis: 'invis'
         };
-        console.log('props in content?', props);
     };
 
     enterClicked() {
-        console.log('we are in here', this.state);
-        // this.setState({enter: true});
+        console.log('we are in here', this);
+        this.setState({
+            contentVis: 'vis',
+            enter: true
+        });
     }
 
     render(){
@@ -25,8 +28,10 @@ class App extends React.Component {
             <div className='top'>
                 <ContactHover/>
                 <div>
-                    <SplashScreen enterClicked={this.enterClicked}/>
-                    <Content enter={this.state.enter}/>
+                    <SplashScreen enterClicked={this.enterClicked.bind(this)}/>
+                    <div className={this.state.contentVis}>
+                        <Content enter={this.state.enter}/>
+                    </div>
                 </div>
             </div>
         )

@@ -153,3 +153,19 @@
     margin-left: 25px;
     display: inline-flex;
 }
+
+.invis {
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.navBarText{
+    cursor: pointer;
+
+}
+
+.vis {
+    transition: visibility 0s 2s, opacity 2s linear;
+    color: white;
+}

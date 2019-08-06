@@ -1,12 +1,18 @@
 import React from 'react';
 import anime from 'animejs';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import WhoIAm from './whoiam'
+import WhatIDo from './whatido'
+import Projects from './projects'
+
 
 class content extends React.Component{
     
     constructor(props){
         super(props);
         this.state = {
+            navclass: 'navbar'
             // text: {
             //     aboutMe: 'About Me',
             //     projects: 'Projects',
@@ -17,9 +23,17 @@ class content extends React.Component{
     render() {
         return (
             <div className='navbar'>
-                <div className='navBarText who' style={{'marginLeft': '0px'}}>Who I am</div>
-                <div className='navBarText what'>What I do</div>
-                <div className='navBarText projects'>Projects</div>
+                <Router>
+                    <div>
+                        <Link className='navBarText who' style={{'marginLeft': '0px'}} to="/">Who I am</Link>
+                        <Link className='navBarText what' to="/whatido">What I do</Link>
+                        <Link className='navBarText projects' to="/projects">Projects</Link>
+
+                        <Route exact path="/" component={WhoIAm} />
+                        <Route path="/whatido" component={WhatIDo} />
+                        <Route path="/projects" component={Projects} />
+                    </div>
+                </Router>
             </div>
         )
     }
