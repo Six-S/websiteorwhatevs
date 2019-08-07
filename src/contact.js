@@ -10,10 +10,10 @@ class contact extends React.Component {
             name: 'contactsButton',
             text: 'Contact Me',
             gotoLink: {
-                reddit: 'https://www.reddit.com/user/FreshRepresentative',
-                stack: 'duckduckgo.com',
-                email: 'mailto:name@email.com',
-                github: 'https://github.com/Six-S'
+                'Square4': 'https://www.reddit.com/user/FreshRepresentative',
+                'Square3': 'duckduckgo.com',
+                'Square2': 'mailto:workwithbrennan@email.com',
+                'Square5': 'https://github.com/Six-S'
             }
         }
     }
@@ -72,11 +72,11 @@ class contact extends React.Component {
     }
 
     linkClick(goto){
-        console.log(goto, '!!!!!!!!!!!!!');
-        if (goto){
+        let current = goto.currentTarget.className
+        if (goto && goto.currentTarget){
             Object.keys(this.state.gotoLink).forEach((link) => {
-                if(goto == link){
-                    console.log(this.state.gotoLink[link]);
+                if(current.includes(link)){
+                    window.open(this.state.gotoLink[link]);
                 }
             })
         }
@@ -87,10 +87,10 @@ class contact extends React.Component {
         return(
             <div className='contactsContainer'>
                 <div className='Square Square1'></div>
-                <i onClick={this.linkClick('email')} className='Square Square2 fa fa-at' style={{fontSize: '30px'}}></i>
-                <i onClick={this.linkClick('stack')} className='Square Square3 fa fa-stack-overflow' style={{fontSize: '30px'}}></i>
-                <i onClick={this.linkClick('reddit')} className='Square Square4 fa fa-reddit' style={{fontSize: '30px'}}></i>
-                <i onClick={this.linkClick('github')} className='Square Square5 fa fa-github-square' style={{fontSize: '35px'}}></i>
+                <i onClick={this.linkClick.bind(this)} className='Square Square2 fa fa-at' style={{fontSize: '30px'}}></i>
+                <i onClick={this.linkClick.bind(this)} className='Square Square3 fa fa-stack-overflow' style={{fontSize: '30px'}}></i>
+                <i onClick={this.linkClick.bind(this)} className='Square Square4 fa fa-reddit' style={{fontSize: '30px'}}></i>
+                <i onClick={this.linkClick.bind(this)} className='Square Square5 fa fa-github-square' style={{fontSize: '35px'}}></i>
                 <button 
                 className={this.state.name}
                 onClick={this.buttonClick.bind(this)}>

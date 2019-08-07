@@ -66,7 +66,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 80%;
     height: 100px;
     margin: auto;
 }
@@ -95,6 +95,7 @@
     position: fixed;
     bottom: 33px;
     right: 16px;
+    cursor: pointer;
 }
 
 .label:hover {

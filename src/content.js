@@ -27,7 +27,7 @@ class content extends React.Component{
                     <div>
                         <Link className='navBarText who' style={{'marginLeft': '0px'}} to="/">Who I am</Link>
                         <Link className='navBarText what' to="/whatido">What I do</Link>
-                        <Link className='navBarText projects' to="/projects">Projects</Link>
+                        <Link className='navBarText projects' to="/projects">What I've Done</Link>
 
                         <Route exact path="/" component={WhoIAm} />
                         <Route path="/whatido" component={WhatIDo} />
