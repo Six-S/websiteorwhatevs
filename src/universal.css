@@ -126,6 +126,7 @@
     margin: auto;
     margin-bottom: 5px;
     background-color: white;
+    transition: width .5s linear;
 }
 
 .contactsButtonClicked {
