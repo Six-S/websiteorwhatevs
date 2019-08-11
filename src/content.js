@@ -13,10 +13,6 @@ class content extends React.Component{
         super(props);
         this.state = {
             navclass: 'navbar'
-            // text: {
-            //     aboutMe: 'About Me',
-            //     projects: 'Projects',
-            // }
         };
     };
 
@@ -25,9 +21,9 @@ class content extends React.Component{
             <div className='navbar'>
                 <Router>
                     <div>
-                        <Link className='navBarText who' style={{'marginLeft': '0px'}} to="/">Who I am</Link>
-                        <Link className='navBarText what' to="/whatido">What I do</Link>
-                        <Link className='navBarText projects' to="/projects">What I've Done</Link>
+                        <Link onClick={this.props.navClicked} className='navBarText who' style={{'marginLeft': '0px'}} to="/">Who I am</Link>
+                        <Link onClick={this.props.navClicked} className='navBarText what' to="/whatido">What I do</Link>
+                        <Link onClick={this.props.navClicked} className='navBarText projects' to="/projects">What I've Done</Link>
 
                         <Route exact path="/" component={WhoIAm} />
                         <Route path="/whatido" component={WhatIDo} />

@@ -7,7 +7,7 @@ class whoiam extends React.Component{
 
     render(){
         return(
-            <div style={{color: 'white'}}>Hello</div>
+            <div style={{color: 'white'}}>Hewwo?? Mistew Obawma</div>
         )
     }
 }

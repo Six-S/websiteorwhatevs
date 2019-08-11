@@ -11,7 +11,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             enter: false,
-            contentVis: 'invis'
+            contentVis: 'invis',
+            navigating: false
         };
     };
 
@@ -21,6 +22,14 @@ class App extends React.Component {
             contentVis: 'vis',
             enter: true
         });
+        this.forceUpdate();
+    }
+
+    navClicked(){
+        console.log('We are here, some nav was clicked.');
+        this.setState({
+            navigating: true
+        });
     }
 
     render(){
@@ -28,9 +37,9 @@ class App extends React.Component {
             <div className='top'>
                 <ContactHover/>
                 <div>
-                    <SplashScreen enterClicked={this.enterClicked.bind(this)}/>
+                    <SplashScreen nav={this.state.navigating} enterClicked={this.enterClicked.bind(this)}/>
                     <div className={this.state.contentVis}>
-                        <Content enter={this.state.enter}/>
+                        <Content enter={this.state.enter} navClicked={this.navClicked.bind(this)}/>
                     </div>
                 </div>
             </div>

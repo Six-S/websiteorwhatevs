@@ -7,7 +7,7 @@ class whatido extends React.Component{
 
     render(){
         return(
-            <div style={{color: 'blue'}}>Hello</div>
+            <div style={{color: 'blue'}}>Hewwo?? Mistew Obawma</div>
         )
     }
 }
