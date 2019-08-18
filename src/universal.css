@@ -171,3 +171,15 @@
     transition: visibility 0s 2s, opacity 2s linear;
     color: white;
 }
+
+.topContent {
+    margin-top: 2%
+}
+
+.list1 {
+    position: fixed;
+    bottom: 30vh;
+    left: 20vh;
+    width: 300px;
+    height: 230px;
+}
