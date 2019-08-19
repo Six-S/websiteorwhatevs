@@ -18,7 +18,25 @@ class whatido extends React.Component{
                 <div className="list1">
                     <h3>Langauges</h3>
                     <ul>
-                        <List points={['Javascript', 'HTML5', 'CSS3', 'PHP7', 'SQL', 'Python', 'Arduino', 'BASH', 'Java', 'Apex']} />
+                        <List points={['Javascript', 'HTML5', 'CSS3', 'PHP7', 'Python2/3', 'Arduino', 'BASH', 'Java', 'Apex']} />
+                    </ul>
+                </div>
+                <div className="list2">
+                    <h3>Frameworks and Libraries</h3>
+                    <ul>
+                        <List points={['React', 'Backbone', 'JSForce', 'JQuery', 'MatPlotLib', 'Pandas', 'BeautifulSoup', 'PyGame', 'TKinter']} />
+                    </ul>
+                </div>
+                <div className="list3">
+                    <h3>Tools</h3>
+                    <ul>
+                        <List points={['VSCode', 'IntelliJ', 'Eclipse', 'Spyder', 'Git', 'RollBar', 'Jira', 'YouTrack']} />
+                    </ul>
+                </div>
+                <div className="list4">
+                    <h3>Misc.</h3>
+                    <ul>
+                        <List points={['Debain Linux', 'Arch Linux', 'Windows', 'SQL', 'MicroControllers', 'Computer Hardware', 'Server Hardware', 'Wireless Networking']} />
                     </ul>
                 </div>
             </div>

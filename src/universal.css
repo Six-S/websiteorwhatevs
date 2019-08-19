@@ -173,13 +173,42 @@
 }
 
 .topContent {
-    margin-top: 2%
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    top: 20vh;
 }
 
 .list1 {
     position: fixed;
     bottom: 30vh;
     left: 20vh;
-    width: 300px;
+    width: 200px;
+    height: 230px;
+}
+
+.list2 {
+    position: fixed;
+    bottom: 30vh;
+    left: 40vh;
+    width: 200px;
+    height: 230px;
+}
+
+
+.list3 {
+    position: fixed;
+    bottom: 30vh;
+    left: 60vh;
+    width: 200px;
+    height: 230px;
+}
+
+
+.list4 {
+    position: fixed;
+    bottom: 30vh;
+    left: 80vh;
+    width: 200px;
     height: 230px;
 }
