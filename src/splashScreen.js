@@ -71,7 +71,7 @@ class splashscreen extends React.Component {
                 nums.map(function (num) {
                     let animation = anime.timeline({
                         easing: 'easeOutExpo',
-                        duration: 2000
+                        duration: 1500
                     });
                     animation.add({
                         targets: '.line' + num,

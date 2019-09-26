@@ -157,7 +157,7 @@
 }
 
 .invis {
-    color: white;
+    display: none;
     visibility: hidden;
     opacity: 0;
 }
@@ -179,9 +179,9 @@
     top: 20vh;
 }
 
-.list1 {
+/* .list1 {
     position: fixed;
-    bottom: 30vh;
+    bottom: 20vh;
     left: 20vh;
     width: 200px;
     height: 230px;
@@ -189,8 +189,8 @@
 
 .list2 {
     position: fixed;
-    bottom: 30vh;
-    left: 40vh;
+    bottom: 20vh;
+    left: 50vh;
     width: 200px;
     height: 230px;
 }
@@ -198,8 +198,8 @@
 
 .list3 {
     position: fixed;
-    bottom: 30vh;
-    left: 60vh;
+    bottom: 20vh;
+    left: 70vh;
     width: 200px;
     height: 230px;
 }
@@ -207,8 +207,33 @@
 
 .list4 {
     position: fixed;
-    bottom: 30vh;
-    left: 80vh;
+    bottom: 20vh;
+    left: 90vh;
     width: 200px;
     height: 230px;
+} */
+
+.gridContainer {
+    display: grid;
+    height: 85vh; 
+    /* grid-gap: 50px 100px; */
+}
+
+.list1 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.list2 {
+    grid-column: 2;
+    grid-row: 3;
+}
+.list3 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.list4 {
+    grid-column: 4;
+    grid-row: 3;
 }
