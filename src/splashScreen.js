@@ -8,6 +8,7 @@ class splashscreen extends React.Component {
         this.state = {
             labelState: 'label'
         }
+        this.nums = [0, 1, 2];
         console.log('props?', props)
     }
 
@@ -20,12 +21,21 @@ class splashscreen extends React.Component {
         }
     }
 
+    componentDidMount() {
+        window.addEventListener('resize', this.handleWindowResize.bind(this));
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowResize.bind(this));
+    }
+
     enterClicked() {
         this.setState({ labelState: 'labelClicked' });
         this.props.enterClicked();
-        let nums = [0, 1, 2]
-        let transY = [-250, 0, 250]
-        nums.map(function (num) {
+        const transY = this.calculateTranslateY();
+
+        // let transY = [-250, 0, 250]
+        this.nums.map(function (num) {
             let animation = anime.timeline({
                 easing: 'easeOutExpo',
                 duration: 2000
@@ -39,8 +49,34 @@ class splashscreen extends React.Component {
                 targets: '.line' + num,
                 duration: 500,
                 width: '80vw',
-            },500);
+            }, 500);
             animation.play();
+        });
+    }
+
+    handleWindowResize() {
+        const transY = this.calculateTranslateY();
+
+        this.nums.map(function (num) {
+            let animation = anime.timeline({
+                easing: 'easeOutExpo',
+                duration: 2000
+            });
+            animation.add({
+                targets: '.line' + num,
+                translateY: transY[num],
+                duration: 500,
+            });
+            animation.play();
+        });
+    }
+
+    calculateTranslateY(){
+        const viewportHeight = window.innerHeight;
+        return this.nums.map((num) => {
+            if (num === 0) return -viewportHeight * 0.4;  // 10vh from top
+            if (num === 1) return -viewportHeight * 0.3;  // 50vh (center)
+            if (num === 2) return viewportHeight * 0.5;  // 90vh near bottom
         });
     }
 
