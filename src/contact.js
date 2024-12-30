@@ -19,7 +19,6 @@ class contact extends React.Component {
     }
 
     animation() {
-        //I'm a complete idiot, and I hate myself
         let nums = [1,2,3,4,5]
         if(this.state.active === false){
             let i = -40
