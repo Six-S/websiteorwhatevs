@@ -34,9 +34,8 @@ class splashscreen extends React.Component {
         this.props.enterClicked();
         const transY = this.calculateTranslateY();
 
-        // let transY = [-250, 0, 250]
         this.nums.map(function (num) {
-            let animation = anime.timeline({
+            const animation = anime.timeline({
                 easing: 'easeOutExpo',
                 duration: 2000
             });
@@ -58,7 +57,7 @@ class splashscreen extends React.Component {
         const transY = this.calculateTranslateY();
 
         this.nums.map(function (num) {
-            let animation = anime.timeline({
+            const animation = anime.timeline({
                 easing: 'easeOutExpo',
                 duration: 2000
             });
@@ -67,6 +66,35 @@ class splashscreen extends React.Component {
                 translateY: transY[num],
                 duration: 500,
             });
+            animation.play();
+        });
+    }
+
+    handleAnimation(options) {
+
+        //set defaults if options aren't passed in
+        const {
+            timelineDuration = 2000,
+            translateYDuration = 500,
+            widthDuration = 500,
+            transY = this.calculateTranslateY()
+        } = options;
+
+        this.nums.map(function (num) {
+            const animation = anime.timeline({
+                easing: 'easeOutExpo',
+                duration: timelineDuration
+            });
+            animation.add({
+                targets: '.line' + num,
+                translateY: transY[num],
+                duration: translateYDuration,
+            });
+            animation.add({
+                targets: '.line' + num,
+                duration: widthDuration,
+                width: '80vw',
+            }, 500);
             animation.play();
         });
     }
@@ -82,10 +110,10 @@ class splashscreen extends React.Component {
 
     navClicked(){
         if(this.state.labelState == 'labelClicked'){
-            let numsClose = [2, 1, 0]
-            let transYClose = [0, 0, 0]
-            numsClose.map(function (num) {
-                let animation = anime.timeline({
+            const numsClose = this.nums.reverse();
+
+            numsClose.map((num) => {
+                const animation = anime.timeline({
                     easing: 'easeOutExpo',
                     duration: 1500
                 });
@@ -96,16 +124,16 @@ class splashscreen extends React.Component {
                 });
                 animation.add({
                     targets: '.line' + num,
-                    translateY: transYClose[num],
+                    translateY: 0,
                     duration: 1000,
                 }, 1000);
                 animation.play();
             });
-            setTimeout(function(){
-                let nums = [0, 1, 2]
-                let transY = [-250, 0, 250]
-                nums.map(function (num) {
-                    let animation = anime.timeline({
+            setTimeout(() => {
+                const transY = [-250, 0, 250];
+
+                this.nums.map((num) => {
+                    const animation = anime.timeline({
                         easing: 'easeOutExpo',
                         duration: 1500
                     });
