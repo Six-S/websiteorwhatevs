@@ -32,31 +32,13 @@ class splashscreen extends React.Component {
     enterClicked() {
         this.setState({ labelState: 'labelClicked' });
         this.props.enterClicked();
-        const transY = this.calculateTranslateY();
-
-        this.nums.map(function (num) {
-            const animation = anime.timeline({
-                easing: 'easeOutExpo',
-                duration: 2000
-            });
-            animation.add({
-                targets: '.line' + num,
-                translateY: transY[num],
-                duration: 500,
-            });
-            animation.add({
-                targets: '.line' + num,
-                duration: 500,
-                width: '80vw',
-            }, 500);
-            animation.play();
-        });
+        this.handleAnimation();
     }
 
     handleWindowResize() {
         const transY = this.calculateTranslateY();
 
-        this.nums.map(function (num) {
+        this.nums.map((num) => {
             const animation = anime.timeline({
                 easing: 'easeOutExpo',
                 duration: 2000
@@ -67,36 +49,64 @@ class splashscreen extends React.Component {
                 duration: 500,
             });
             animation.play();
+            return true;
         });
     }
 
-    handleAnimation(options) {
+    handleAnimation(options={}) {
 
         //set defaults if options aren't passed in
         const {
             timelineDuration = 2000,
             translateYDuration = 500,
             widthDuration = 500,
-            transY = this.calculateTranslateY()
+            width = '80vw',
+            transY = this.calculateTranslateY(),
+            nums = this.nums,
+            closing = false
         } = options;
 
-        this.nums.map(function (num) {
-            const animation = anime.timeline({
-                easing: 'easeOutExpo',
-                duration: timelineDuration
+        //If this is a "closing" animation, we need
+        //to reverse the order of the animation.
+        if(closing){
+            nums.map((num) => {
+                const animation = anime.timeline({
+                    easing: 'easeOutExpo',
+                    duration: timelineDuration
+                });
+                animation.add({
+                    targets: '.line' + num,
+                    duration: widthDuration,
+                    width: width,
+                }, 500);
+                animation.add({
+                    targets: '.line' + num,
+                    translateY: transY[num],
+                    duration: translateYDuration,
+                });
+                animation.play();
+                return true;
             });
-            animation.add({
-                targets: '.line' + num,
-                translateY: transY[num],
-                duration: translateYDuration,
+        } else {
+            nums.map((num) => {
+                const animation = anime.timeline({
+                    easing: 'easeOutExpo',
+                    duration: timelineDuration
+                });
+                animation.add({
+                    targets: '.line' + num,
+                    translateY: transY[num],
+                    duration: translateYDuration,
+                });
+                animation.add({
+                    targets: '.line' + num,
+                    duration: widthDuration,
+                    width: width,
+                }, 500);
+                animation.play();
+                return true;
             });
-            animation.add({
-                targets: '.line' + num,
-                duration: widthDuration,
-                width: '80vw',
-            }, 500);
-            animation.play();
-        });
+        }
     }
 
     calculateTranslateY(){
@@ -105,55 +115,31 @@ class splashscreen extends React.Component {
             if (num === 0) return -viewportHeight * 0.4;  // 10vh from top
             if (num === 1) return -viewportHeight * 0.3;  // 50vh (center)
             if (num === 2) return viewportHeight * 0.5;  // 90vh near bottom
+            return 0;
         });
     }
 
     navClicked(){
-        if(this.state.labelState == 'labelClicked'){
-            const numsClose = this.nums.reverse();
+        if(this.state.labelState === 'labelClicked'){
 
-            numsClose.map((num) => {
-                const animation = anime.timeline({
-                    easing: 'easeOutExpo',
-                    duration: 1500
-                });
-                animation.add({
-                    targets: '.line' + num,
-                    duration: 500,
-                    width: '100px',
-                });
-                animation.add({
-                    targets: '.line' + num,
-                    translateY: 0,
-                    duration: 1000,
-                }, 1000);
-                animation.play();
+            this.handleAnimation({
+                timelineDuration: 1500,
+                translateYDuration: 1000,
+                nums: this.nums.reverse(),
+                transY: [0, 0, 0],
+                width: '100px',
+                closing: true
             });
-            setTimeout(() => {
-                const transY = [-250, 0, 250];
 
-                this.nums.map((num) => {
-                    const animation = anime.timeline({
-                        easing: 'easeOutExpo',
-                        duration: 1500
-                    });
-                    animation.add({
-                        targets: '.line' + num,
-                        translateY: transY[num],
-                        duration: 1000,
-                    });
-                    animation.add({
-                        targets: '.line' + num,
-                        duration: 500,
-                        width: '80vw',
-                    },1000);
-                    animation.play();
+            setTimeout(() => {
+                this.handleAnimation({
+                    timelineDuration: 1500,
+                    translateYDuration: 1500,
+                    widthDuration: 500
                 });
             }, 2000);
-        } else {
-            console.log('label has not been clicked.');
-        }
     }
+}
 
     render() {
         return (

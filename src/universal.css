@@ -150,11 +150,33 @@
     text-align: center;
     word-wrap: break-word;
     color: white;
+    padding-top: 7vh;
 }
 
 .navBarText {
     margin-left: 25px;
     display: inline-flex;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.headerContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.header {
+    width: 80vw;
+    height: 20px;
+    margin: 0 auto;
+    text-align: center;
+    word-wrap: break-word;
+    color: white;
+    padding-top: 6vh;
+    font-family: 'Times New Roman';
+    font-size: 25px;
 }
 
 .invis {
